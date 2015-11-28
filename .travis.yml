@@ -1,0 +1,23 @@
+language: ruby 2.2.1
+
+rvm:
+  - 2.2.1
+
+notifications:
+ email:
+   - dariusgoore@gmail.com
+
+# # uncomment this line if your project needs to run something other than `rake`:
+# script:
+#   - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && bundle exec rake tests:integration || false'
+
+# Select modern postgres
+addons:
+  postgresql: "9.4"
+
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres; cp config/database.ci.yml config/database.yml
+  - bundle exec rake db:create db:migrate db:schema:load
+
+# Cache dependencies
+cache: bundler
