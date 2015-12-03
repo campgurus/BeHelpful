@@ -19,16 +19,15 @@
     <![endif]-->
   </head>
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class ='container'>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <ul class="hmenu">
+        <%#= render 'devise/menu/registration_items' %>
+        <%#= render 'devise/menu/login_items' %>
+      </ul>
 
-    <h1>Hello, Be Helpful</h1>
-    <ul class="hmenu">
-      <%#= render 'devise/menu/registration_items' %>
-      <%#= render 'devise/menu/login_items' %>
-    </ul>
-
-    <%= yield %>
-
+      <%= yield %>
+    </div>
   </body>
 </html>
