@@ -1,12 +1,12 @@
-
+require "codeclimate-test-reporter"
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
-# require 'devise'
+require 'devise'
 require 'rspec/rails'
 require 'database_cleaner'
-# include Warden::Test::Helpers
-# Warden.test_mode!
+include Warden::Test::Helpers
+Warden.test_mode!
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -36,11 +36,9 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
   # Include Devise test helpers
-  # config.include Devise::TestHelpers, :type => :controller
-  # config.extend ControllerMacros, :type => :controller
-  # config.extend ControllerMacros, :type => :feature
+  config.include Devise::TestHelpers, :type => :controller
 
-  # config.include Devise::TestHelpers, :type => :view
+  config.include Devise::TestHelpers, :type => :view
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
