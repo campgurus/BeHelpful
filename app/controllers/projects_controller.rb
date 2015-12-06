@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+	before_action :set_project, only: [:show, :edit, :update, :destroy]
   def index
   	if params[:tag].present?
   		@projects = Project.tagged_with(params[:tag])
@@ -8,7 +9,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-  	@project = Project.find(params[:id])
   end
 
   def new
@@ -16,11 +16,9 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-  	@project = Project.find(params[:id])
   end
 
   def update
-  	@project = Project.find(params[:id])
     if @project.update_attributes(project_params)
       flash[:success] = "Project updated"
       redirect_to @project
@@ -50,6 +48,10 @@ private
 
   def project_params
   	params.require(:project).permit(:name, :description, :tag_list)
+  end
+
+  def set_project
+  	@project = Project.find(params[:id])
   end
 
 end
