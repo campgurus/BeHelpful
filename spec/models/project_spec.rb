@@ -31,3 +31,10 @@ describe "#description" do
       expect(project.description).to eq "MyText"
   end
 end
+
+describe "#tags" do
+	it "returns the correct tags" do
+		project = create(:project, :poetry)
+		  expect(project.tag_list).to include("poetry")
+	end
+end  
