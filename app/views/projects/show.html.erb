@@ -1,6 +1,13 @@
 <h1>Project: <%= @project.name %></h1>
 <h3>Description: <%= @project.description %></h3>
-<% @project.tag_list.each do |tag| %>
-  <%= link_to tag, tag_path(tag) %>
-<% end %>
+<p>Tags: 
+	<% if @project.tag_list.present? %>
+		<% @project.tag_list.each do |tag| %>
+		  <%= link_to tag, tag_path(tag), :class => 'btn btn-xs btn-default btn-outline' %>
+		<% end %>
+	<% else %>
+		<p>This project has no tags yet!</p>
+	<% end %>
+</p>
 
+<%= link_to "Edit this Project", edit_project_path(@project), :class => 'btn btn-warning' %>
