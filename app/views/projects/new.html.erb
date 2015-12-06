@@ -1,18 +1,4 @@
 <h1>Your New Project!</h1>
 <h3>Create a New Project by adding a name and description below</h3>
 
-<%= form_for :project, url: projects_path do |f| %>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
- 
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description, :size => 150 %>
-  </p>
- 
-  <p>
-    <%= f.button :submit, :class => 'btn btn-primary' %>
-  </p>
-<% end %>
+<%= render 'form' %>
