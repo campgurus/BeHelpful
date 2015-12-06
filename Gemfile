@@ -38,6 +38,12 @@ gem 'devise'
 # authorization
 gem 'pundit'
 
+# Use select2
+gem "select2-rails"
+
+# add tagging to projects
+gem 'acts-as-taggable-on', '~> 3.4'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   resources :projects
+  get 'tags/:tag', to: 'projects#index', as: :tag
 
   devise_for :users
   get 'welcome/index'

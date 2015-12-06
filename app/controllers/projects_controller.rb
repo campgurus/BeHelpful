@@ -1,6 +1,10 @@
 class ProjectsController < ApplicationController
   def index
-  	@projects = Project.all
+  	if params[:tag].present?
+  		@projects = Project.tagged_with(params[:tag])
+  	else
+  		@projects = Project.all
+  	end
   end
 
   def show
@@ -20,10 +24,18 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def tagged
+  	if params[:tag].present
+  		@projects = Project.tagged_with(params[:tag])
+  	else
+  		@projects = Project.all
+  	end
+  end
+
 private
 
   def project_params
-  	params.require(:project).permit(:name, :description)
+  	params.require(:project).permit(:name, :description, :tag_list)
   end
 
 end
