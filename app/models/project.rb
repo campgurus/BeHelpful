@@ -3,4 +3,5 @@ class Project < ActiveRecord::Base
   acts_as_taggable_on :skills, :interests
 	validates_presence_of :name
 	validates_presence_of :description
+	validates :name, uniqueness: { message: "There is already a project with this name" }
 end
