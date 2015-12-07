@@ -4,4 +4,6 @@ class Project < ActiveRecord::Base
 	validates_presence_of :name
 	validates_presence_of :description
 	validates :name, uniqueness: { message: "There is already a project with this name" }
+	has_many :tasks
+	accepts_nested_attributes_for :tasks
 end

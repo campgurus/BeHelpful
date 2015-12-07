@@ -1,4 +1,4 @@
-<%= form_for @project do |f| %>
+<%= simple_form_for @project do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -10,17 +10,19 @@
     </div>
   <% end %>
   <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
- 
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description, size: "100x10" %>
-  </p>
-  <p>
-    <%= f.label :tag_list, "Tags (separated by commas)" %>
+    <%= f.input :name %>
+    <%= f.input :description, size: "100x10" %>
     <%= f.text_field :tag_list, value: @project.tag_list.to_s %>
+  </p>
+  <p>
+    <div id="tasks">
+      <%= f.simple_fields_for :tasks do |task| %>
+        <%= render 'task_fields', :f => task %>
+      <% end %>
+      <div class="tasks">
+        <%= link_to_add_association 'add a task', f, :tasks, :class => "btn btn-warning" %>
+      </div>
+    </div>
   </p>
   <p>
     <%= f.button :submit, :class => 'btn btn-primary' %>

@@ -44,6 +44,12 @@ gem "select2-rails"
 # add tagging to projects
 gem 'acts-as-taggable-on', '~> 3.4'
 
+# easier form markup
+gem 'simple_form'
+
+# manages nested forms
+gem 'cocoon'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -1,0 +1,6 @@
+<div class="nested-fields">
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.collection_select :status_id, Status.all, :id, :name %>
+  <%= link_to_remove_association "delete task", f %>
+</div>
