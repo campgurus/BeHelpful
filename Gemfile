@@ -32,6 +32,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'unicorn'
 gem 'puma'
 
+# Environment variables
+gem 'dotenv'
+
 # authentication
 gem 'devise'
 
