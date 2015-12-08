@@ -35,6 +35,9 @@ gem 'puma'
 # authentication
 gem 'devise'
 
+# github social login
+gem 'omniauth-github'
+
 # authorization
 gem 'pundit'
 
